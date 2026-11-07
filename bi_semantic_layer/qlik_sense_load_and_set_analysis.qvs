@@ -1,0 +1,58 @@
+// ============================================================================
+// Enterprise People Analytics — Qlik Sense Load Script & Set Analysis Library
+// ============================================================================
+
+SET ThousandSep=',';
+SET DecimalSep='.';
+SET MoneyFormat='$#,##0.00;($#,##0.00)';
+
+// Section Access for Confidential Employee Data Protection
+Section Access;
+LOAD * INLINE [
+    ACCESS, USERID, DEPARTMENT_SCOPE
+    ADMIN,  INTERNAL\PC_ANALYTICS_ADMIN, *
+    USER,   INTERNAL\HRBP_RND, RESEARCH & DEVELOPMENT
+    USER,   INTERNAL\HRBP_SALES, SALES
+    USER,   INTERNAL\HRBP_HR, HUMAN RESOURCES
+];
+Section Application;
+
+// Governed Employee Lifecycle Fact Table Load
+Employees_PC_Fact:
+LOAD
+    emp_hash_id AS EmployeeHashID,
+    UPPER(Department) AS DEPARTMENT_SCOPE,
+    Department,
+    JobRole,
+    JobLevel,
+    tenure_band AS TenureBand,
+    Attrition,
+    attrition_flag AS AttritionFlag,
+    OverTime,
+    overtime_flag AS OvertimeFlag,
+    employee_experience_index AS EmployeeExperienceIndex,
+    compa_ratio AS CompaRatio,
+    promotion_stagnation_ratio AS PromotionStagnationRatio,
+    TrainingTimesLastYear,
+    solution_training_adopted AS SolutionTrainingAdopted,
+    YearsAtCompany,
+    YearsInCurrentRole,
+    YearsSinceLastPromotion,
+    workforce_segment_id AS WorkforceSegmentID
+FROM [lib://PC_Analytics_Outputs/pc_department_role_scorecard.csv]
+(txt, utf8, embedded labels, delimiter is ',', msq);
+
+// ============================================================================
+// Master Measure Expressions (Qlik Set Analysis)
+// ============================================================================
+// 1. Overall Voluntary Attrition Rate %:
+//    Count({<Attrition={'Yes'}>} Distinct EmployeeHashID) / Count(Distinct EmployeeHashID)
+//
+// 2. Overtime Attrition Rate % (30.53%):
+//    Count({<Attrition={'Yes'}, OverTime={'Yes'}>} Distinct EmployeeHashID) / Count({<OverTime={'Yes'}>} Distinct EmployeeHashID)
+//
+// 3. Non-Overtime Attrition Rate % (10.44%):
+//    Count({<Attrition={'Yes'}, OverTime={'No'}>} Distinct EmployeeHashID) / Count({<OverTime={'No'}>} Distinct EmployeeHashID)
+//
+// 4. k-Anonymity Protected Compa-Ratio (Suppress when cell headcount < 5):
+//    If(Count(Distinct EmployeeHashID) >= 5, Avg(CompaRatio), Null())

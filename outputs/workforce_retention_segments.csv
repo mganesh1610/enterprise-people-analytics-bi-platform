@@ -1,0 +1,5 @@
+workforce_segment_id,employees,attrition_rate_pct,overtime_pct,avg_exi,avg_compa_ratio,avg_tenure_yrs,avg_promo_wait_yrs
+0,365,32.33,100.0,2.79,1.004,5.35,1.7
+1,158,9.49,21.52,2.71,0.975,20.8,7.13
+2,650,10.31,0.0,2.84,0.906,5.31,1.76
+3,297,12.46,5.72,2.43,1.321,5.43,1.08

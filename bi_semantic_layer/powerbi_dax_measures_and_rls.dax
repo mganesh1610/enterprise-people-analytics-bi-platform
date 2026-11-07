@@ -1,0 +1,77 @@
+// ============================================================================
+// Enterprise People Analytics — Microsoft Power BI DAX Measures & RLS Rules
+// ============================================================================
+
+// 1. Core Workforce & Headcount Measures
+Total Headcount =
+COUNTROWS ( 'stg_ibm_hr_employees' )
+
+Separated Employees =
+CALCULATE (
+    COUNTROWS ( 'stg_ibm_hr_employees' ),
+    'stg_ibm_hr_employees'[Attrition] = "Yes"
+)
+
+Retained Employees =
+CALCULATE (
+    COUNTROWS ( 'stg_ibm_hr_employees' ),
+    'stg_ibm_hr_employees'[Attrition] = "No"
+)
+
+Voluntary Attrition Rate % =
+DIVIDE ( [Separated Employees], [Total Headcount], 0 )
+
+Workforce Retention Rate % =
+1.0 - [Voluntary Attrition Rate %]
+
+// 2. Overtime, Total Rewards & Payroll Governance Measures
+Overtime Headcount =
+CALCULATE (
+    [Total Headcount],
+    'stg_ibm_hr_employees'[OverTime] = "Yes"
+)
+
+Overtime Share % =
+DIVIDE ( [Overtime Headcount], [Total Headcount], 0 )
+
+Overtime Attrition Rate % =
+CALCULATE (
+    [Voluntary Attrition Rate %],
+    'stg_ibm_hr_employees'[OverTime] = "Yes"
+)
+
+Avg Compa-Ratio =
+AVERAGE ( 'stg_ibm_hr_employees'[compa_ratio] )
+
+// 3. Employee Experience (PES) & Solution Adoption Measures
+Avg Employee Experience Index (EXI) =
+AVERAGE ( 'stg_ibm_hr_employees'[employee_experience_index] )
+
+Training & Solution Adoption Rate % =
+DIVIDE (
+    CALCULATE (
+        [Total Headcount],
+        'stg_ibm_hr_employees'[TrainingTimesLastYear] >= 2
+    ),
+    [Total Headcount],
+    0
+)
+
+// 4. Confidentiality & k-Anonymity Self-Service Protection (n < 5 Rule)
+Safe Self-Service Avg Monthly Income =
+IF (
+    [Total Headcount] < 5,
+    BLANK (),
+    AVERAGE ( 'stg_ibm_hr_employees'[MonthlyIncome] )
+)
+
+Safe Self-Service Attrition Rate % =
+IF (
+    [Total Headcount] < 5,
+    BLANK (),
+    [Voluntary Attrition Rate %]
+)
+
+// 5. Row-Level Security (RLS) Filter Expression for Department Business Leaders
+// Applied on table 'stg_ibm_hr_employees' under Role [Department_Leader_Self_Service]:
+// 'stg_ibm_hr_employees'[Department] = LOOKUPVALUE('security_rls_mapping'[Department], 'security_rls_mapping'[UserPrincipalName], USERPRINCIPALNAME())

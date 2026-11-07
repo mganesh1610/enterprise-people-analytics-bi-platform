@@ -1,0 +1,32 @@
+Department,JobRole,JobLevel,headcount,separated_count,attrition_rate_pct,retention_rate_pct,overtime_share_pct,avg_experience_index,training_adoption_pct,avg_tenure_years,avg_years_since_promo,avg_compa_ratio,rls_masked_avg_monthly_income,attrition_vs_dept_diff_pp,exi_vs_dept_diff
+Human Resources,Human Resources,1,33,10,30.3,69.7,24.24,2.788,90.91,4.12,1.21,1.024,2733.21,11.25,0.014
+Human Resources,Human Resources,2,13,0,0.0,100.0,23.08,2.75,84.62,6.54,1.15,1.042,5563.46,-19.05,-0.024
+Human Resources,Human Resources,3,6,2,33.33,66.67,33.33,2.625,66.67,9.33,1.83,0.964,9623.0,14.28,-0.149
+Human Resources,Manager,4,4,0,0.0,100.0,75.0,3.0,100.0,19.75,2.75,1.0,,-19.05,0.226
+Human Resources,Manager,5,7,0,0.0,100.0,14.29,2.75,85.71,14.29,5.0,0.998,19197.86,-19.05,-0.024
+Research & Development,Laboratory Technician,1,200,56,28.0,72.0,24.0,2.689,95.0,4.11,1.23,1.069,2854.59,14.16,-0.037
+Research & Development,Research Scientist,1,234,45,19.23,80.77,33.33,2.725,88.03,4.18,1.25,1.059,2827.65,5.39,-0.001
+Research & Development,Healthcare Representative,2,78,3,3.85,96.15,26.92,2.737,93.59,6.22,1.92,1.098,5865.35,-9.99,0.011
+Research & Development,Laboratory Technician,2,56,5,8.93,91.07,23.21,2.79,92.86,7.63,2.0,0.834,4455.63,-4.91,0.064
+Research & Development,Manufacturing Director,2,90,5,5.56,94.44,23.33,2.717,86.67,6.29,1.54,1.051,5612.76,-8.28,-0.009
+Research & Development,Research Scientist,2,57,2,3.51,96.49,33.33,2.711,96.49,9.04,2.6,0.902,4818.91,-10.33,-0.015
+Research & Development,Healthcare Representative,3,44,5,11.36,88.64,25.0,2.693,81.82,10.23,4.14,0.938,9363.95,-2.48,-0.033
+Research & Development,Laboratory Technician,3,3,1,33.33,66.67,33.33,2.083,100.0,17.0,3.33,0.601,,19.49,-0.643
+Research & Development,Manager,3,8,2,25.0,75.0,37.5,2.688,100.0,7.63,4.63,1.218,12155.0,11.16,-0.038
+Research & Development,Manufacturing Director,3,45,5,11.11,88.89,28.89,2.872,93.33,9.27,2.93,0.933,9307.04,-2.73,0.146
+Research & Development,Research Director,3,28,0,0.0,100.0,32.14,2.536,92.86,9.68,2.29,1.275,12721.57,-13.84,-0.19
+Research & Development,Research Scientist,3,1,0,0.0,100.0,0.0,2.25,100.0,1.0,0.0,0.974,,-13.84,-0.476
+Research & Development,Healthcare Representative,4,9,1,11.11,88.89,55.56,2.972,88.89,18.0,6.33,0.803,12973.0,-2.73,0.246
+Research & Development,Manager,4,23,0,0.0,100.0,26.09,2.717,95.65,13.52,5.74,1.037,16757.22,-13.84,-0.009
+Research & Development,Manufacturing Director,4,10,0,0.0,100.0,50.0,2.825,80.0,11.9,3.6,0.828,13383.0,-13.84,0.099
+Research & Development,Research Director,4,26,0,0.0,100.0,19.23,2.76,88.46,9.88,3.38,1.017,16429.04,-13.84,0.034
+Research & Development,Manager,5,23,1,4.35,95.65,17.39,2.837,100.0,15.57,5.48,1.0,19234.0,-9.49,0.111
+Research & Development,Research Director,5,26,2,7.69,92.31,34.62,2.779,88.46,13.35,3.96,0.999,19204.81,-6.15,0.053
+Sales,Sales Representative,1,76,32,42.11,57.89,28.95,2.743,94.74,2.63,0.92,0.939,2506.72,21.48,0.008
+Sales,Sales Executive,2,233,36,15.45,84.55,28.76,2.747,90.56,6.38,1.82,1.086,5800.88,-5.18,0.012
+Sales,Sales Representative,2,7,1,14.29,85.71,28.57,2.714,100.0,6.0,2.57,0.734,3921.0,-6.34,-0.021
+Sales,Manager,3,4,0,0.0,100.0,50.0,2.688,75.0,3.0,0.0,1.241,,-20.63,-0.047
+Sales,Sales Executive,3,79,17,21.52,78.48,27.85,2.715,96.2,9.19,3.73,0.914,9124.99,0.89,-0.02
+Sales,Manager,4,20,0,0.0,100.0,20.0,2.75,95.0,15.6,4.95,1.024,16540.9,-20.63,0.015
+Sales,Sales Executive,4,14,4,28.57,71.43,35.71,2.607,85.71,16.57,6.43,0.817,13202.5,7.94,-0.128
+Sales,Manager,5,13,2,15.38,84.62,30.77,2.75,100.0,18.38,4.08,0.993,19088.0,-5.25,0.015

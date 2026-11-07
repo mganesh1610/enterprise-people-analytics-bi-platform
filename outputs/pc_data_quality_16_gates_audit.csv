@@ -1,0 +1,17 @@
+gate_id,category,check_name,status,observed_value,threshold,escalation_owner
+DQ-01,Provenance,IBM HR Dataset SHA-256 Integrity,PASS,a5c31e38bd7fafc9,Exact SHA-256 Match,People Information & Systems
+DQ-02,Provenance,UCI Workforce Benchmark SHA-256 Integrity,PASS,5b00264637dbfec3,Exact SHA-256 Match,People Information & Systems
+DQ-03,Completeness,"HR Core Record Completeness (1,470 Employees x 35 Fields)",PASS,"1470 rows, 0 nulls","1,470 rows, 0 nulls",HRIS Data Engineering
+DQ-04,Uniqueness,Primary Key Uniqueness (EmployeeNumber & Pseudonymized Hash),PASS,1470/1470 unique IDs,100% unique,People Information & Systems
+DQ-05,Schema Hygiene,Zero-Variance Constant Column Detection & Exclusion,PASS,"Quarantined 3 constant cols (EmployeeCount, Over18, StandardHours)",Quarantine from ML/BI model,BI Semantic Model Owner
+DQ-06,Privacy & RBAC,PII Identifier Pseudonymization (EmployeeNumber -> SHA-256 Hash),PASS,"1,470/1,470 masked",Zero cleartext IDs in self-service views,P&C Data Privacy Officer
+DQ-07,Privacy & RBAC,Self-Service k-Anonymity Cell Suppression (n < 5 Rule),PASS,6 small cells masked (n < 5),Suppress cells with < 5 employees,P&C Data Privacy Officer
+DQ-08,Temporal Logic,Role Tenure vs. Company Tenure Consistency,PASS,0 violations,YearsInCurrentRole <= YearsAtCompany,People Operations Systems
+DQ-09,Temporal Logic,Promotion Tenure vs. Company Tenure Consistency,PASS,0 violations,YearsSinceLastPromotion <= YearsAtCompany,People Growth Systems
+DQ-10,Total Rewards,Payroll MonthlyIncome & Compa-Ratio Boundary Reconciliation,PASS,94 compa-ratio exceptions flagged for Total Rewards review,"MonthlyIncome > 0; flag Compa-Ratio outside [0.65, 1.65]",Total Rewards & Payroll
+DQ-11,Experience Scale,PES Survey Scale Bounds (1-4 Likert Validation),PASS,"Range [1.00, 4.00]","All survey scores in [1.0, 4.0]",PES Capability Owner
+DQ-12,External Benchmark,Workforce Benchmark Unknown Token ('?') Quarantine & Tagging,PASS,"2,399/32,561 rows tagged (workclass=1836, occ=1843, country=583)",Explicitly quarantine '?' tokens before rate denominators,Talent Acquisition Analytics
+DQ-13,Reconciliation,Cross-Tool Headcount & Attrition Parity (SQL vs. Power BI / Tableau / Qlik),PASS,"1,470 headcount | 237 separations (16.1224%)",0.0000% cross-platform discrepancy,BI Governance Lead
+DQ-14,Statistical Validity,Holdout Attrition Model Discrimination (ROC-AUC >= 0.80),PASS,Holdout ROC-AUC = 0.8466 (Top-20% Lift = 3.50x),Holdout ROC-AUC >= 0.80,People Analytics Science
+DQ-15,Statistical Validity,Probabilistic Calibration (Brier Score <= 0.12),PASS,Holdout Brier = 0.0836,Holdout Brier Score <= 0.12,People Analytics Science
+DQ-16,Self-Service Governance,Role-Based Access Control (RBAC) View Segregation,PASS,4 governed views validated,Salary/PII columns stripped from non-HR self-service view,People Information & Systems

@@ -1,0 +1,15 @@
+occupation,benchmark_workers,avg_weekly_hours,overtime_schedule_pct,upper_comp_band_pct
+Prof-specialty,4038,42.37,38.71,44.85
+Craft-repair,4030,42.3,29.98,22.53
+Exec-managerial,3992,44.97,48.72,48.52
+Adm-clerical,3721,37.56,14.06,13.38
+Sales,3584,40.76,38.87,27.06
+Other-service,3212,34.61,12.2,4.11
+Machine-op-inspct,1966,40.71,20.3,12.46
+Transport-moving,1572,44.65,41.35,20.29
+Handlers-cleaners,1350,37.87,16.96,6.15
+Farming-fishing,989,46.99,48.53,11.63
+Tech-support,912,39.47,21.71,30.48
+Protective-serv,644,42.85,29.97,32.61
+Priv-house-serv,143,32.8,14.69,0.7
+Armed-Forces,9,40.67,33.33,11.11
